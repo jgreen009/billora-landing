@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+@layer base {
+  :root {
+    --font-sans: var(--font-billora-sans), Arial, sans-serif;
+    --font-mono: var(--font-billora-mono), monospace;
+    color-scheme: light;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: #f7f7f2;
+    color: #202721;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: #d9dcff;
+    color: #252548;
+  }
+  :focus-visible {
+    outline: 2px solid #4c4cf0;
+    outline-offset: 4px;
+  }
+  .skip-link {
+    position: fixed;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 24px;
+    background: #4c4cf0;
+    color: white;
+    font-weight: 600;
+    border-radius: 6px;
+    z-index: 10000;
+  }
+  .skip-link:focus {
+    top: 16px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* Lenis drives desktop wheel/anchor easing; avoid a second browser easing layer. */
+html[data-scroll="smooth"] { scroll-behavior: auto !important; }
